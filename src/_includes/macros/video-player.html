@@ -21,7 +21,7 @@
    options.button_pos  : A String used to denote the position of the video
                          play button.
 
-                         Possible Values: 'center, bottomRight'
+                         Possible Values: 'center (default), bottomRight'
 
    ========================================================================== #}
 
@@ -34,7 +34,7 @@
                           'https://img.youtube.com/vi/' + video_id + '/maxresdefault.jpg'
                           if video_player == 'youtube'
     %}
-    {% set button_pos   = options.image.button_pos or 'center' %}
+    {% set button_pos   = options.button_pos or 'center' %}
     {% set is_flexible  = ( options.video.width or options.video.height ) is not defined %}
     <div class="video-player video-player__{{ video_player }}"
          data-video-id="{{ video_id }}"
@@ -62,7 +62,7 @@
                 {{ share.render({
                     'title': 'About the CFPB',
                     'heading': 'Share this video',
-                    'additional_classes': 'video-player_share-actions content-l_col content-l_col-1-2'
+                    'additional_classes': 'video-player_share-actions'
                 }) }}
             </div>
         </div>

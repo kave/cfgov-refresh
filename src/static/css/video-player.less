@@ -17,6 +17,10 @@
 // Variable used to set the size of the play button
 @play-btn-size__px: 73px;
 
+// Variable used to set the play button image
+@play-btn-url: '/static/img/video-play-btn.png';
+
+
 // Variable used to help center the video container
 @share-width__px: 130px;
 
@@ -61,7 +65,7 @@
     position: absolute;
     height: @play-btn-size__px;
     width: @play-btn-size__px;
-    background: url('/static/img/video-play-btn.png') no-repeat;
+    background: url( @play-btn-url ) no-repeat;
     z-index: 10;
 
     &__center {
@@ -88,11 +92,11 @@
 }
 
 .video-player_video-container__flexible {
-    & .video-player_iframe-container {
+    .video-player_iframe-container {
         .u-flexible-container();
     }
 
-    & .video-player_video {
+    .video-player_video {
         .u-flexible-container_inner();
     }
 }
@@ -148,7 +152,7 @@
 
 .hero .video-player.video-playing {
 
-    & .video-player_video-container {
+    .video-player_video-container {
         display: table;
 
         .respond-to-max(@tablet-max, {

@@ -264,15 +264,15 @@
         </header>
         <footer>
             <figure class="event-media_container">
-            <!-- TODO: Add code for live streaming Event and determine image property name -->
+            {# TODO: Add code for live streaming Event and determine image property name #}
             {% if (event_state == 'past' and post.archive.youtube is defined)  %}
                 {% import 'macros/video-player.html' as video_player %}
                 {% set video_id   = post.archive.youtube.split('=') | last %}
                 {% set image_url  = post.attachments[1].url.replace('content.','') %}
                 {{ video_player.render({
+                      'button_pos' : 'bottomRight',
                       'image' : {
-                          'url'        : image_url,
-                          'button_pos' : 'bottomRight',
+                          'url' : image_url,
                       },
                       'video' : {
                           'id' : video_id
@@ -280,6 +280,7 @@
                    })
                 }}
             {% elif event_state == 'past' %}
+                {# TODO: Replace placeholder image with appropriate image #}
                 <img src="https://placeholdit.imgix.net/~text?C3%97350&w=700&h=350"
                      alt="Video placeholder image" />
             {% else %}
