@@ -359,11 +359,20 @@
                 <td class='{{ options.speaker_col_classes }}' data-label="Speakers">
                 {% for speaker in block.speakers %}
                     {%- if speaker.url -%}
-                        <a href="{{ speaker.url }}">{{ speaker.name }}, {{ speaker.position }}</a>{{ ';' if loop.index < loop.length }}
-                    {% else %}
-                        {{ speaker.name }}, {{ speaker.position }}{{ ';' if loop.index < loop.length }}
+                    <a href="{{ speaker.url }}">
+                    {{ speaker.name
+                       ~ ( ', ' if speaker.name.find(',') == -1 )
+                       ~ speaker.position
+                    }}
+                    </a>
+                    {%- else -%}
+                    {{ speaker.name
+                       ~ ( ', ' if speaker.name.find(',') == -1 )
+                       ~ speaker.position
+                    }}
                     {%- endif -%}
-                {% endfor %}
+                    {{ '; ' if loop.index < loop.length }}
+                {%- endfor -%}
                 </td>
             </tr>
         {% endfor %}

@@ -43,10 +43,6 @@
     .show-on_video-playing {
         display: block;
     }
-
-    .respond-to-max(@mobile-max, {
-        margin-top: 0;
-    });
 }
 
 // Video image container related styles
@@ -138,11 +134,13 @@
     });
 }
 
-.video-player_share-actions, .video-player_video-actions {
-     margin-top: @gutter-half__em;
+.video-player_share-actions,
+.video-player_video-actions {
+    .respond-to-max(@mobile-max, {
+        margin-top: @gutter-half__em;
+    });
 
     .respond-to-min(@tablet-min, {
-        margin: 0;
         .grid_column(6);
     });
 }
@@ -153,14 +151,12 @@
 .hero .video-player.video-playing {
 
     .video-player_video-container {
-        display: table;
-
-        .respond-to-max(@tablet-max, {
-            display: block;
+        .respond-to-min(@tablet-max, {
+            display: table;
         });
     }
 
-    & + .hide-on_video-playing {
+    .hide-on_video-playing {
         display: none;
     }
 }
@@ -183,6 +179,12 @@
 }
 
 .hero .video-player_iframe-container {
+    .respond-to-max(@tablet-max, {
+        .u-flexible-container();
+        float: none;
+        width: 100%;
+    });
+
     float: left;
 
     .respond-to-max(@tablet-max, {
@@ -217,7 +219,8 @@
     });
 }
 
-.hero .video-player_share-actions, .hero .video-player_video-actions {
+.hero .video-player_share-actions,
+.hero .video-player_video-actions {
 
     .respond-to-min(@desktop-min, {
         .grid_column(12);
