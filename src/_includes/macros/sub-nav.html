@@ -19,27 +19,30 @@
    ========================================================================== #}
 
 {% macro render(sub_nav_title, sub_nav_landing, sub_nav_items, sub_nav_media) %}
-<div class="sub-nav_wrapper">
-    <div class="sub-nav_inner-wrapper
-                wrapper">
+<div class="sub-nav js-sub-nav">
+    <div class="wrapper wrapper__sub-nav">
+        <button class="sub-nav_btn__back js-sub-nav_back">Back</button>
         <section class="sub-nav_menu">
-            <h4 class="sub-nav_title">
-                <a href="{{ sub_nav_landing }}">{{ sub_nav_title }}</a>
-            </h4>
-            <hr class="content-line content-line__nav u-show-on-desktop">
+            <span class="sub-nav_title">
+              <a class="sub-nav_link"
+                 href="{{ sub_nav_landing }}">
+                 {{ sub_nav_title }}
+              </a>
+            </span>
+            <div class="content-l content-l__full">
             {%- for sub_nav_item in sub_nav_items %}
                 <ul class="sub-nav_menu-list
-                           list__unstyled
-                           list-expanding
-                           list-expanding_child-list">
+                           content-l_col
+                           content-l_col-1-3
+                           list__unstyled">
                     {%- for href, id, caption in sub_nav_item %}
-                        <li class="list_item list-expanding_list-item">
+                        <li class="list_item sub-nav_item">
                           {% if href == '' %}
                               <a class="list_link u-link__disabled">
                                   {{ caption | safe }}
                               </a>
                           {% else %}
-                              <a class="list_link list_link{{'__current' if href == request.path }}"
+                              <a class="list_link list_link{{'__current' if href == request.path }} sub-nav_link"
                                   href="{{ href|e }}">
                                   {{ caption | safe }}
                              </a>
@@ -48,9 +51,9 @@
                     {%- endfor %}
                 </ul>
             {%- endfor %}
+            </div>
         </section>
-        <aside class="sub-nav_media
-                      u-show-on-desktop">
+        <aside class="sub-nav_media">
             {{ sub_nav_media }}
         </aside>
     </div>
