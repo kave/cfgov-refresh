@@ -75,6 +75,7 @@
         width: 60px;
         height: 60px;
 
+        display: none;
         float: left;
 
         background: @white;
@@ -112,19 +113,35 @@
 }
 
 .sub-nav {
-    &_btn__back {
-        display: none;
+    background-color: @gray-5;
+    width: 100%;
 
+    overflow: hidden;
+    position: absolute;
+    z-index: 10;
+
+    transition: transform 0.2s ease-in,
+                max-height 0.2s ease-in;
+
+    &[aria-expanded="true"] {
+        transition: transform 0.25s ease-out,
+                    max-height 0.25s ease-out;
+    }
+
+    &_btn__back {
         .webfont-medium();
 
+        padding: 15px;
+        width: 100%;
+
+        display: none;
+        position: relative;
+
+        background-color: @gray-10;
         border: none;
         border-bottom: 1px solid @gray-50;
-        background: @gray-20;
-        width: 100%;
         text-align: left;
-        padding: 15px;
         text-transform: uppercase;
-        position: relative;
 
         &:focus {
             outline: 1px dotted @black;
@@ -133,23 +150,30 @@
         &:before {
             .cf-icon();
 
-            content: @cf-icon-left;
             margin-right: 0.6em;
+
+            content: @cf-icon-left;
         }
     }
+
     &_media {
         .grid_column(4);
 
-        position: relative;
-
         padding: 0 @grid_gutter-width / 2;
+
+        position: relative;
     }
 
     &_title {
-        display: block;
         .webfont-regular();
 
+        display: block;
+
         border-bottom: 1px solid @gray-50;
+    }
+
+    &_link {
+        display: block;
     }
 }
 
@@ -159,23 +183,23 @@
 
 .respond-to-max(@tablet-max, {
     .primary-nav {
-        position: absolute;
         width: 100%;
-        z-index: 10;
-        transform: translateX(-100%);
-        transition: transform 0.25s ease-out;
 
-        //overflow-y: scroll;
+        position: absolute;
+        transform: translateX(-100%);
+        z-index: 10;
 
         border-top: 1px solid @gray-50;
+        transition: transform 0.2s ease-in;
+
 
         &[aria-expanded="true"] {
             transform: translateY(0);
+            transition: transform 0.25s ease-out;
         }
 
         &_trigger {
-            z-index: 20;
-            position: relative;
+            display: block;
         }
 
         &_menu-list {
@@ -198,12 +222,13 @@
             &:after {
                 .cf-icon();
 
-                content: @cf-icon-right;
 
                 position: absolute;
                 right: 0;
                 top: 50%;
                 transform: translateY(-50%);
+
+                content: @cf-icon-right;
             }
 
             &:not(.u-link__disabled):after {
@@ -213,17 +238,10 @@
     }
 
     .sub-nav {
-        //display: none;
-        background-color: @gray-10;
-        position: absolute;
-        width: 100%;
         top: 0;
         right: 100%;
-        transition: transform 0.2s ease-out;
 
         &[aria-expanded="true"] {
-            //display: block;
-
             transform: translateX(100%);
         }
 
@@ -237,9 +255,9 @@
         }
 
         &_menu-list {
-            margin-bottom: 0;
-            margin-top: 0 !important;
             padding-left: 15px;
+            margin-top: 0 !important;
+            margin-bottom: 0;
 
             &:last-child .sub-nav_item:last-child {
                 border: none;
@@ -253,7 +271,6 @@
         &_link {
             .u-link__colors(@black, @black);
 
-            display: block;
             padding-top: 15px;
             padding-bottom: 15px;
         }
@@ -265,10 +282,6 @@
    ========================================================================== */
 
 .respond-to-min(@desktop-min, {
-    .primary-nav_trigger {
-        display: none;
-    }
-
     .primary-nav {
         margin-right: -15px;
         margin-left: -15px;
@@ -300,55 +313,42 @@
     }
 
     .sub-nav {
-        position: absolute;
-        z-index: 100;
-        left: 0;
-        overflow: hidden;
-
-        width: 100%;
         max-height: 0;
 
-        background: @gray-5;
+        left: 0;
 
         // Kick off the GPU
         transform: translate3d(0,0,0);
-
-        // Transition off.
-        transition: 0.2s max-height linear;
 
         // Expand the menu by looking for aria attributes.
         // This will help us to keep our eye on a11y.
         // The .no-js selector enables simple hover menu support for users w/o JS.
         &[aria-expanded="true"],
         .no-js .primary-nav_item:hover & {
+            max-height: unit(400px / @base-font-size-px, em);
+
             border-top: 1px solid @gray-50;
             border-bottom: 4px solid @gray-50;
-            max-height: unit(400px / @base-font-size-px, em);
-            transition: 0.25s max-height ease-out;
         }
 
         &_title {
-            .webfont-regular();
+            padding-bottom: @grid_gutter-width / 2;
 
             font-size: 1em;
-
-            border-bottom: 1px solid @gray-50;
-            padding-bottom: @grid_gutter-width / 2;
         }
 
-        a {
-            display: block;
-
+        &_link {
             .u-link__colors(@pacific, @black);
         }
 
         .list_link {
+            .u-link__colors(@pacific, @pacific, @black, @black, @black,
+                            transparent, transparent, @green, @green, @green);
+
             padding-top: unit(10px / @font-size-large, em);
             padding-bottom: unit(10px / @font-size-large, em);
             padding-left: unit(15px / @font-size-large, em);
 
-            .u-link__colors(@pacific, @pacific, @black, @black, @black,
-                            transparent, transparent, @green, @green, @green);
 
             border-left-style: solid;
             border-left-width: 5px;
@@ -357,6 +357,7 @@
             &__current {
                 .u-link__colors(@black, @black, @black, @black, @black,
                                 @green, @green, @green, @green, @green);
+
                 cursor: default;
             }
         }

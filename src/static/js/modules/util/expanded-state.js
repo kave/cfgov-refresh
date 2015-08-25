@@ -31,7 +31,9 @@ function toggleExpandedState( $elem, state, cb, delay ) {
   $elem.attr( 'aria-expanded', state );
 
   if ( cb ) {
-    navTimeOut = setTimeout( cb(), delay );
+    navTimeOut = setTimeout( function() {
+      return cb();
+    }, delay );
   }
 }
 
