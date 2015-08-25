@@ -48,22 +48,19 @@ describe( 'Get Event States', function() {
 
     it( 'should not navigate away from the page', function() {
       $( '.nav-link-1' ).trigger( 'click' );
+
       expect( window.location.href ).to.not.equal( 'http:// www.google.com/' );
     } );
 
     it( 'should toggle the sibling sub nav', function() {
-      // var toggleSiblingSpy = sandbox.spy( es.set.toggleExpandedState );
-
       $( '.nav-link-1' ).trigger( 'click' );
-      // expect( toggleSiblingSpy.called ).to.be.ok;
+
       expect( $( '.sub-nav-1' ).attr( 'aria-expanded' ) ).to.equal( 'true' );
     } );
 
     it( 'should not toggle a non-sibling sub nav', function() {
-      // var toggleSiblingSpy = sandbox.spy( es.set.toggleExpandedState );
-
       $( '.nav-link-2' ).trigger( 'click' );
-      // expect( toggleSiblingSpy.called ).to.be.ok;
+
       expect( $( '.sub-nav-1' ).attr( 'aria-expanded' ) ).to.equal( 'false' );
     } );
   } );
@@ -90,10 +87,8 @@ describe( 'Get Event States', function() {
 
   describe( 'Primary Nav Trigger Events', function() {
     it( 'should toggle the primary nav', function() {
-      // var togglePrimarySpy = sandbox.spy( es.set.toggleExpandedState );
-
       $( '.js-primary-nav_trigger' ).trigger( 'click' );
-      // expect( togglePrimarySpy.called ).to.be.ok;
+
       expect( $( '.js-primary-nav' ).attr( 'aria-expanded' ) )
         .to.equal( 'true' );
     } );
@@ -101,12 +96,9 @@ describe( 'Get Event States', function() {
 
   describe( 'Sub Nav Back Events', function() {
     it( 'should close the sub nav', function() {
-      // var toggleSiblingSpy = sandbox.spy( es.set.toggleExpandedState );
-
-      $( '.nav-link-1' ).trigger( 'click' );
-      // expect( toggleSiblingSpy.called ).to.be.ok;
-      expect( $( '.sub-nav-1' ).attr( 'aria-expanded' ) ).to.equal( 'true' );
+      $( '.sub-nav-1' ).attr( 'aria-expanded', 'true' );
       $( '.sub-nav-back-1' ).trigger( 'click' );
+
       expect( $( '.sub-nav-1' ).attr( 'aria-expanded' ) ).to.equal( 'false' );
     } );
   } );
