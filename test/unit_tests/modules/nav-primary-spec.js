@@ -81,7 +81,7 @@ describe( 'Get Event States', function() {
 
       setTimeout( function() { // eslint-disable-line max-nested-callbacks, no-inline-comments, max-len
         expect( $( '.sub-nav-2' ).attr( 'aria-expanded' ) ).to.equal( 'true' );
-      }, 400 );
+      }, 500 );
     } );
   } );
 
