@@ -14,6 +14,7 @@ $( document ).ready( function() { // eslint-disable-line max-statements, no-inli
 
   // Native-Browserify modules.
   require( '../modules/beta-banner-state' ).init();
+  require( '../modules/nav-primary.js' ).init();
   require( '../modules/secondary-nav-toggle' ).init();
   require( '../modules/post-filter' ).init();
   require( '../modules/init-chosen' ).init();
@@ -29,7 +30,6 @@ $( document ).ready( function() { // eslint-disable-line max-statements, no-inli
   require( '../modules/show-hide-fields.js' ).init();
   require( '../modules/external-site.js' ).init();
   require( '../modules/external-site-redirect.js' ).init();
-  require( '../modules/nav-primary.js' ).init();
 
   // Page-specific modules.
   require( './contact-us/index.js' ).init();

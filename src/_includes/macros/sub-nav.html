@@ -30,25 +30,23 @@
             </span>
             <div class="content-l content-l__full">
             {%- for sub_nav_item in sub_nav_items %}
-                <ul class="sub-nav_menu-list
+                <ul class="list
+                           list__unstyled
                            content-l_col
                            content-l_col-1-3
-                           list__unstyled">
+                           sub-nav_menu-list">
                     {%- for href, id, caption in sub_nav_item %}
                         <li class="list_item sub-nav_item">
-                            {% if href == '' %}
-                            <a class="list_link u-link__disabled">
-                                {{ caption | safe }}
-                            </a>
-                            {% else %}
                             <a class="list_link
                                       {{ 'list_link__current' if
                                           href == request.path }}
+                                      {{ 'u-link__disabled' if
+                                          href == ''}}
                                       sub-nav_link"
-                               href="{{ href|e }}">
+                               {{ 'href=' + href | e if
+                                   href != '' }}>
                                 {{ caption | safe }}
                              </a>
-                          {% endif %}
                         </li>
                     {%- endfor %}
                 </ul>

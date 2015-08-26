@@ -72,8 +72,8 @@
     }
 
     &_trigger {
-        width: 60px;
-        height: 60px;
+        width: unit(60px / 24px, em);
+        height: unit(60px / 24px, em);
 
         display: none;
         float: left;
@@ -82,7 +82,7 @@
         border: none;
         border-right: 1px solid @gray-50;
         color: @gray;
-        font-size: 1.5em;
+        font-size: unit(24px / @base-font-size-px, em);
 
         &:focus {
             outline: 1px dotted @black;
@@ -131,7 +131,7 @@
     &_btn__back {
         .webfont-medium();
 
-        padding: 15px;
+        padding: unit(@grid_gutter-width / 2 / @base-font-size-px, em);
         width: 100%;
 
         display: none;
@@ -203,8 +203,8 @@
         }
 
         &_menu-list {
-            padding-left: (@grid_gutter-width / 2);
-            padding-right: (@grid_gutter-width / 2);
+            padding-left: @grid_gutter-width / 2;
+            padding-right: @grid_gutter-width / 2;
 
             background-color: @gray-10;
         }
@@ -214,8 +214,8 @@
         }
 
         &_link {
-            padding-top: (@grid_gutter-width / 2);
-            padding-bottom: (@grid_gutter-width / 2);
+            padding-top: @grid_gutter-width / 2;
+            padding-bottom: @grid_gutter-width / 2;
 
             position: relative;
 
@@ -250,12 +250,12 @@
         }
 
         &_menu {
-            padding-right: 15px;
-            padding-left: 15px;
+            padding-right: @grid_gutter-width / 2;
+            padding-left: @grid_gutter-width / 2;
         }
 
         &_menu-list {
-            padding-left: 15px;
+            padding-left: @grid_gutter-width / 2;
             margin-top: 0 !important;
             margin-bottom: 0;
 
@@ -271,8 +271,8 @@
         &_link {
             .u-link__colors(@black, @black);
 
-            padding-top: 15px;
-            padding-bottom: 15px;
+            padding-top: @grid_gutter-width / 2;
+            padding-bottom: @grid_gutter-width / 2;
         }
     }
 });
@@ -283,8 +283,8 @@
 
 .respond-to-min(@desktop-min, {
     .primary-nav {
-        margin-right: -15px;
-        margin-left: -15px;
+        margin-right: -@grid_gutter-width / 2;
+        margin-left: -@grid_gutter-width / 2;
 
         &_item {
             margin-right: 0.25em;
@@ -294,8 +294,8 @@
 
         &_link {
             padding-bottom: @grid_gutter-width;
-            margin-right: (@grid_gutter-width / 2);
-            margin-left: (@grid_gutter-width / 2);
+            margin-right: @grid_gutter-width / 2;
+            margin-left: @grid_gutter-width / 2;
 
             font-size: unit(18px / @base-font-size-px, em);
 
