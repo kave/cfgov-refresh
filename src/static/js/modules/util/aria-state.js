@@ -1,7 +1,7 @@
 /* ==========================================================================
-   Aria State
+   ARIA State
 
-   Code convetions copied from the following with major modifications:
+   Code conventions copied from the following with major modifications:
 
    - https://github.com/IBM-Watson/a11y.js
      Copyright (c) 2014 IBM
@@ -37,6 +37,10 @@ function _defineProperty( state, element, object ) {
       ariaState.set( _state, _element, _value );
     }
   } );
+
+  ariaState.set( _state, _element, _value );
+
+  return object;
 }
 
 function _validateState( state ) {
@@ -49,6 +53,11 @@ function _validateState( state ) {
 ariaState = {
 
   create: function create( state, element ) {
+    if ( _validateState( state ) === false ||
+         element instanceof HTMLElement === false ) {
+      throw new Error( 'Invalid Arguments' );
+    }
+
     return this.define( state, element, {} );
   },
 
