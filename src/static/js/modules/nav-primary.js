@@ -24,10 +24,12 @@ function init() {
   $primaryLink.on( 'click', function( event ) {
     event.preventDefault();
 
-    var $thisSubNav = $( this ).siblings( '.js-sub-nav' );
+    var $this = $( this );
+    var $thisSubNav = $this.siblings( '.js-sub-nav' );
     var $otherSubNavs = $subNavs.not( $thisSubNav );
 
     if ( es.get.isOneExpanded( $otherSubNavs ) ) {
+      es.set.toggleExpandedState( $primaryLink, 'false' );
       es.set.toggleExpandedState(
         $otherSubNavs,
         'false',
@@ -36,11 +38,14 @@ function init() {
     } else {
       es.set.toggleExpandedState( $thisSubNav );
     }
+
+    es.set.toggleExpandedState( $this );
   } );
 
   $subBack.on( 'click', function() {
     var $thisSubNav = $( this ).closest( '.js-sub-nav' );
 
+    es.set.toggleExpandedState( $primaryLink, 'false' );
     es.set.toggleExpandedState( $thisSubNav, 'false' );
   } );
 
