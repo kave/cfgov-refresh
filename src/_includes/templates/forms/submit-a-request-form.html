@@ -1,6 +1,5 @@
-    {% import 'macros/form.html' as form %}
-    {% from 'common-form-fields.html' import state as state %}
-    {% from 'common-form-fields.html' import date_picker as date_picker %}
+{% import 'macros/util/form.html' as form %}
+{% import 'macros/util/common-form-fields.html' as form_field %}
 
     <section class="block
                     block__bg
@@ -11,7 +10,7 @@
 
             {{ form.input('Last Name', 'text', '1-2', true) }}
 
-            {{ date_picker('Document dates:')}}
+            {{ form_field.date_picker('Document dates:') }}
 
             <div class="form-l_col form-l_col-1">
                 <label for="form_requested-info">
@@ -29,11 +28,11 @@
             </div>
 
             {{ form.select( 'Select a request category',
-                       'Select the FOIA request category',
-                       ['Commercial', 'Media', 'Others'],
-                       '1',
-                       false,
-                       false ) }}
+                            'Select the FOIA request category',
+                            ['Commercial', 'Media', 'Others'],
+                            '1',
+                            false,
+                            false ) }}
 
             <div class="js-additional-field">
             </div>
@@ -176,7 +175,7 @@
 
                 {{ form.input('City', 'text', '1-3', false, true) }}
 
-                {{ state( '1-3', false, true )}}
+                {{ form_field.state('1-3', false, true)}}
 
                 {{ form.input('Zip code', 'text', '1-3', false, true) }}
             </fieldset>
