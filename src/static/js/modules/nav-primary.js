@@ -19,6 +19,7 @@ function init() {
   $primaryTrigger.on( 'click', function() {
     es.set.toggleExpandedState( $primaryNav );
     es.set.toggleExpandedState( $primaryTrigger );
+    es.set.toggleExpandedState( $( 'body' ) );
   } );
 
   $primaryLink.on( 'click', function( event ) {

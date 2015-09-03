@@ -28,12 +28,10 @@
                     {{ sub_nav_title }}
                 </a>
             </span>
-            <div class="content-l content-l__full">
+            <div class="sub-nav_menu-wrapper">
             {%- for sub_nav_item in sub_nav_items %}
                 <ul class="list
                            list__unstyled
-                           content-l_col
-                           content-l_col-1-3
                            sub-nav_menu-list">
                     {%- for href, id, caption in sub_nav_item %}
                         <li class="list_item sub-nav_item">
