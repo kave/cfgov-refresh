@@ -23,7 +23,7 @@ class CFGovTestCase(SheerEnvironment, MacroTestCase):
             os.path.dirname(__file__),
             os.pardir,
             os.pardir,
-            'cfgov/v1/jinja2/v1'))
+            'cfgov/v1/jinja2'))
 
         return templates
 
@@ -33,7 +33,7 @@ class CFGovTestCase(SheerEnvironment, MacroTestCase):
         Return a list of subdirectory names that should not be searched
         for templates.
         """
-        templates = 'cfgov/v1/jinja2/v1'
+        templates = 'cfgov/v1/jinja2'
         return [
             templates + '/_defaults',
             templates + '/_lib',

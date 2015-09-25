@@ -58,7 +58,7 @@ Given the `MAJOR.MINOR.PATCH` pattern, here is how we decide to increment:
 - Updated the primary nav to move focus as user enters and leaves nav levels
 - Moved handlebars from npm to bower.
 - Added jQuery CDN with fallback to head to satisfy GTM requirements.
-- Changes the location of the /dist folder to cfgov/v1/jinja2/v1
+- Changes the location of the /dist folder to cfgov/v1/jinja2
 - Server port is now at 8000
 - Updated Dep Dir title to include "Acting"
 - included with context flag for macros that make a call to request object

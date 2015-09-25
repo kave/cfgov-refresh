@@ -108,8 +108,8 @@ To do this, run the following:
 # Use the cfgov-refresh virtualenv.
 workon cfgov-refresh
 
-# cd into the /cfgov/v1/jinja2/v1/ directory.
-cd cfgov/v1/jinja2/v1
+# cd into the /cfgov/v1/jinja2 directory.
+cd cfgov/v1/jinja2
 
 # Index the latest content from the API output from a WordPress and Django back-end.
 # **This requires the constants in INSTALL - Configuration to be set**

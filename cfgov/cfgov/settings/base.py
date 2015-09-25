@@ -137,7 +137,7 @@ WAGTAIL_SITE_NAME = "v1"
 
 # Sheer related settings
 
-SHEER_SITES = [Path(os.path.dirname(__file__)).ancestor(2) + '/v1/jinja2/v1',
+SHEER_SITES = [Path(os.path.dirname(__file__)).ancestor(2) + '/v1/jinja2',
                Path(__file__).ancestor(4).child('docs'), STATIC_ROOT]
 SHEER_ELASTICSEARCH_SERVER = os.environ.get('ES_HOST', 'localhost') + ':' + os.environ.get('ES_PORT', '9200')
 SHEER_ELASTICSEARCH_INDEX = os.environ.get('SHEER_ELASTICSEARCH_INDEX', 'content')
